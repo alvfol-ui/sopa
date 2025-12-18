@@ -1,0 +1,60 @@
+.word-search-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 1.5rem;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    user-select: none;
+    touch-action: none;
+}
+
+.grid-row {
+    display: flex;
+    gap: 4px;
+}
+
+.grid-cell {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    font-family: 'Courier New', monospace;
+    text-transform: lowercase;
+    color: #1e3a5f;
+    background: #f8fafc;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.grid-cell:hover {
+    background: #e2e8f0;
+    transform: scale(1.05);
+}
+
+.grid-cell[style*="background"] {
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 500px) {
+    .word-search-grid {
+        padding: 0.75rem;
+        gap: 2px;
+    }
+
+    .grid-row {
+        gap: 2px;
+    }
+
+    .grid-cell {
+        width: 28px;
+        height: 28px;
+        font-size: 0.9rem;
+    }
+}
