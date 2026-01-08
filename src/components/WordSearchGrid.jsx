@@ -60,33 +60,36 @@ const WordSearchGrid = ({
     };
 
     return (
-        <div
-            ref={gridRef}
-            className="word-search-grid"
-            onMouseUp={handleMouseUp}
-            onMouseLeave={handleMouseUp}
-            onTouchEnd={handleTouchEnd}
-            onTouchMove={handleTouchMove}
-        >
-            {grid.map((row, y) => (
-                <div key={y} className="grid-row">
-                    {row.map((cell, x) => (
-                        <div
-                            key={`${x}-${y}`}
-                            data-x={x}
-                            data-y={y}
-                            className="grid-cell"
-                            style={getCellHighlight(x, y)}
-                            onMouseDown={() => handleMouseDown(x, y)}
-                            onMouseEnter={() => handleMouseEnter(x, y)}
-                            onTouchStart={(e) => handleTouchStart(e, x, y)}
-                        >
-                            {cell.letter}
-                        </div>
-                    ))}
-                </div>
-            ))}
-        </div>
+        <>
+            <div
+                ref={gridRef}
+                className="word-search-grid"
+                onMouseUp={handleMouseUp}
+                onMouseLeave={handleMouseUp}
+                onTouchEnd={handleTouchEnd}
+                onTouchMove={handleTouchMove}
+            >
+                {grid.map((row, y) => (
+                    <div key={y} className="grid-row">
+                        {row.map((cell, x) => (
+                            <div
+                                key={`${x}-${y}`}
+                                data-x={x}
+                                data-y={y}
+                                className="grid-cell"
+                                style={getCellHighlight(x, y)}
+                                onMouseDown={() => handleMouseDown(x, y)}
+                                onMouseEnter={() => handleMouseEnter(x, y)}
+                                onTouchStart={(e) => handleTouchStart(e, x, y)}
+                            >
+                                {cell.letter}
+                            </div>
+                        ))}
+                    </div>
+                ))}
+            </div>
+            <p className="grid-subtitle">Cambio minúsculo</p>
+        </>
     );
 };
 

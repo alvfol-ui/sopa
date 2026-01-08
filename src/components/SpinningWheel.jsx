@@ -23,9 +23,14 @@ const SpinningWheel = ({ onThemeSelected }) => {
         setRotation(totalRotation);
 
         setTimeout(() => {
+            // Normalize the rotation to 0-360 range
             const normalizedRotation = ((totalRotation % 360) + 360) % 360;
-            const pointerAngle = (360 - normalizedRotation + segmentAngle / 2) % 360;
-            const selectedIndex = Math.floor(pointerAngle / segmentAngle) % themeList.length;
+            // The pointer is at the top (0° visually). 
+            // Segments start at index 0 from the top going clockwise.
+            // When the wheel rotates, we need to find which segment ends up at the top.
+            // The segment at the top after rotation is the one that was originally at -normalizedRotation
+            const pointerPosition = (360 - normalizedRotation) % 360;
+            const selectedIndex = Math.floor(pointerPosition / segmentAngle) % themeList.length;
             const theme = themeList[selectedIndex];
 
             setSelectedTheme(theme);
